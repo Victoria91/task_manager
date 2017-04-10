@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!, except: :sign_in
   before_action :authorize_user!
+  before_action :load_task, except: [:new, :index, :create]
   # layout 'Webpage'
 
 
@@ -25,5 +26,9 @@ class ApplicationController < ActionController::Base
 
 
   def authorize_user!
+  end
+
+  def load_task
+    @task = Task.find(params[:id])
   end
 end

@@ -22,6 +22,21 @@ RSpec.describe Admin::TasksController do
     it 'renders index template' do
       expect(response).to render_template :new
     end
+  end
 
+  describe 'GET #edit' do
+    let(:task) { FactoryGirl.create(:task) }
+    before { get :edit, id: task.id } 
+
+    it 'loads require task' do
+      expect(assigns(:task)).to eq(task)
+    end
+  end
+
+  describe 'POST #create' do
+
+    it 'creates a task' do
+      expect{ post :create, FactoryGirl.attributes_for(:task) }.to change(Task, :count).by(1)
+    end
   end
 end
