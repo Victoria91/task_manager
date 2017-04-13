@@ -15,7 +15,18 @@ class ApplicationController < ActionController::Base
   end
 
   def create
+    byebug
     @task = Task.new(task_params)
+    if @task.save
+      redirect_to [:admin, :tasks]
+    else 
+      render 'new'
+    end
+  end
+
+  def destroy
+    @task.destroy
+    redirect_to [:admin, :tasks]
   end
 
   private

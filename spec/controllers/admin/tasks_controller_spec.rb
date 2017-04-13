@@ -36,7 +36,15 @@ RSpec.describe Admin::TasksController do
   describe 'POST #create' do
 
     it 'creates a task' do
-      expect{ post :create, FactoryGirl.attributes_for(:task) }.to change(Task, :count).by(1)
+      expect{ post :create, task: FactoryGirl.attributes_for(:task) }.to change(Task, :count).by(1)
+    end
+  end
+
+  describe 'DELETE #destroy' do
+    let!(:task) { FactoryGirl.create(:task) }
+
+    it 'destroys a task' do
+      expect { delete :destroy, id: task.id }.to change(Task, :count).by(-1)
     end
   end
 end
