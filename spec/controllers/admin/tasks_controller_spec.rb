@@ -26,7 +26,7 @@ RSpec.describe Admin::TasksController do
 
   describe 'GET #edit' do
     let(:task) { FactoryGirl.create(:task) }
-    before { get :edit, id: task.id } 
+    before { get :edit, id: task.id }
 
     it 'loads require task' do
       expect(assigns(:task)).to eq(task)
@@ -34,7 +34,6 @@ RSpec.describe Admin::TasksController do
   end
 
   describe 'POST #create' do
-
     it 'creates a task' do
       expect{ post :create, task: FactoryGirl.attributes_for(:task) }.to change(Task, :count).by(1)
     end

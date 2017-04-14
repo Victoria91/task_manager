@@ -3,11 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!, except: :sign_in
   before_action :authorize_user!
   before_action :load_task, except: [:new, :index, :create]
-  # layout 'Webpage'
-
 
   def sign_in
-    
   end
 
   def new
@@ -15,13 +12,16 @@ class ApplicationController < ActionController::Base
   end
 
   def create
-    byebug
     @task = Task.new(task_params)
     if @task.save
       redirect_to [:admin, :tasks]
-    else 
+    else
       render 'new'
     end
+  end
+
+  def edit
+    render 'new'
   end
 
   def destroy
@@ -29,8 +29,16 @@ class ApplicationController < ActionController::Base
     redirect_to [:admin, :tasks]
   end
 
+  def update
+    if @task.update(task_params)
+      redirect_to [:admin, :tasks]
+    else
+      render 'new'
+    end
+  end
+
   private
-  
+
   def authenticate_user!
     # redirect_to :sign_in unless session[:user_id]
   end

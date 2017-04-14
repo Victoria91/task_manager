@@ -5,6 +5,7 @@ table.table
     th Описание
     th Статус
     th Дата создания
+    th Действия
   tbody
     - @tasks.each do |task|
       tr
@@ -13,3 +14,8 @@ table.table
         td = task.description
         td = task.state
         td = l task.created_at
+        td
+          = link_to '', [:edit, :admin, task], class: 'glyphicon glyphicon-edit'
+                  / <a href="#">
+          / <span class="glyphicon glyphicon-edit"></span>
+        / </a>
