@@ -16,6 +16,6 @@ table.table
         td = l task.created_at
         td
           = link_to '', [:edit, :admin, task], class: 'glyphicon glyphicon-edit'
-          | &nbsp
-          = link_to '', [:admin, task], class: 'glyphicon glyphicon-remove', method: :delete,
-                    data: { confirm: 'Уверены, что хотите удалить?' }
+                  / <a href="#">
+          / <span class="glyphicon glyphicon-edit"></span>
+        / </a>

@@ -8,6 +8,7 @@ html lang="en"
     title= content_for?(:title) ? yield(:title) : "TaskManager"
     = csrf_meta_tags
     = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
   body
     .navbar.navbar-default.navbar-static-top
       .container
@@ -18,7 +19,7 @@ html lang="en"
         a.navbar-brand href="#"  TaskManager
         .navbar-collapse.collapse.navbar-responsive-collapse
           ul.nav.navbar-nav
-            li= link_to "Link1", "/path1"
+            li= link_to 'Выйти', sign_out_path, method: :delete
             li= link_to "Link2", "/path2"
             li= link_to "Link3", "/path3"
     .container
@@ -30,9 +31,7 @@ html lang="en"
           .well.sidebar-nav
             h3 Sidebar
             ul.nav.nav-list
-              li= link_to 'Создать задачу', new_admin_task_path
-              li= link_to "Link2", "/path2"
-              li= link_to "Link3", "/path3"
+              li= link_to 'Создать задачу', [:new, current_user.admin? ? :admin : :user, :task] if current_user
           /! /.well
         /! /span
       /! /row

@@ -7,4 +7,10 @@ FactoryGirl.define do
     email
     password 'qwerty12'
   end
+
+  factory :admin, class: User do
+    email
+    password 'qwerty12'
+    admin true
+  end
 end
