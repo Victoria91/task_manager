@@ -5,7 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
 gem 'rails', '~> 5.0.2'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
@@ -14,9 +13,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'simple_form'
 gem 'jquery-rails'
-gem 'simplecov', :require => false, :group => :test
+gem 'simplecov', require: false, group: :test
 gem 'slim'
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
+gem 'russian'
 
 group :development, :test do
   gem 'byebug', platform: :mri

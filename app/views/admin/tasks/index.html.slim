@@ -13,7 +13,7 @@ table.table
         td = task.name
         td = task.description
         td = task.state
-        td = l task.created_at
+        td = l task.created_at, format: :short
         td
           = link_to '', [:edit, :admin, task], class: 'glyphicon glyphicon-edit'
           | &nbsp

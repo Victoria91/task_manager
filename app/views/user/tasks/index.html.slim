@@ -13,9 +13,10 @@ table.table
         td = task.name
         td = task.description
         td = task.state
-        td = l task.created_at
+        td = l task.created_at, format: :short
         td
-          = link_to '', [:edit, :admin, task], class: 'glyphicon glyphicon-edit'
-                  / <a href="#">
-          / <span class="glyphicon glyphicon-edit"></span>
-        / </a>
+          - if current_user.eql? task.user
+            = link_to '', [:edit, :user, task], class: 'glyphicon glyphicon-edit'
+            | &nbsp
+            = link_to '', [:user, task], class: 'glyphicon glyphicon-remove', method: :delete,
+                      data: { confirm: 'Уверены, что хотите удалить?' }
