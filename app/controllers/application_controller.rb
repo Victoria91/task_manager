@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def render_anauthorized
+    render text: 'Доступ запрещён', status: 403
+  end
+
   def current_user
     @current_user ||= User.find_by(user_params)
   end

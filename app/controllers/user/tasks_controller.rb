@@ -6,6 +6,8 @@ class User::TasksController < TasksController
   private
 
   def authorize_user!
+    return unless @task
+    render_anauthorized unless @task.user == current_user
   end
 
   def task_params

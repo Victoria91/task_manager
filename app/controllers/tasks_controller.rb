@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
-  # before_action :authenticate_user!, except: [:sign_in, :log_in]
-  before_action :authorize_user!
   before_action :load_task, except: [:index, :new, :create]
+  before_action :authorize_user!
 
   def new
     @task = Task.new
